@@ -26,25 +26,27 @@ if uploaded_file is not None:
         st.image(image, caption="Original", channels='BGR')
 
     with col3:
-        brightness = st.slider("Brightness", -100, 100, 0)
-        contrast = st.slider("Contrast", 0.5, 3.0, 1.0)
+        col4, col5 = st.columns(2)
+        with col4:
+            brightness = st.slider("Brightness", -100, 100, 0)
+            contrast = st.slider("Contrast", 0.5, 3.0, 1.0)
 
-        processed = apply_contrast(processed, contrast)
-        processed = apply_brightness(processed, brightness)
+            processed = apply_contrast(processed, contrast)
+            processed = apply_brightness(processed, brightness)
 
-        if st.button("Toggle Grayscale"):
-            st.session_state.grayscale = not st.session_state.grayscale
+            if st.button("Toggle Grayscale"):
+                st.session_state.grayscale = not st.session_state.grayscale
 
-        if st.session_state.grayscale:
-            processed = apply_grayscale(processed)
-
-        file_name = st.text_input("File name", "processed_image")
-        if file_name.strip() == "":
-            file_name = "processed_image"
-        file_format = st.selectbox("Format", ["png", "jpg", "jpeg"])
+            if st.session_state.grayscale:
+                processed = apply_grayscale(processed)
 
     with col2:
         st.image(processed, caption="Processed", channels='BGR')
+
+    file_name = st.text_input("File name", "processed_image")
+    if file_name.strip() == "":
+        file_name = "processed_image"
+    file_format = st.selectbox("Format", ["png", "jpg", "jpeg"])
 
     ext = f".{file_format}"
     _, buffer = cv2.imencode(ext, processed)
