@@ -16,10 +16,10 @@ def apply_skin_smooth(img, strength):
         spatial_weight ~ exp( -(distance^2)      / (2*sigmaSpace^2) )
         range_weight   ~ exp( -(colour_diff^2)   / (2*sigmaColor^2) )
 
-    The range term is the clever bit: a neighbour is only allowed to blur
-    into you if its COLOUR is also similar. So flat skin (similar colours)
-    gets averaged and smoothed, while a strong edge (big colour jump, e.g.
-    eye vs skin) contributes ~0 weight and stays crisp.
+    The range term is the key: a neighbour contributes only if its COLOUR is
+    also similar. So flat skin (similar colours) gets averaged and smoothed,
+    while a strong edge (big colour jump, e.g. eye vs skin) contributes ~0
+    weight and stays crisp.
 
     `strength` (0..100) drives both sigmas — higher = smoother, more plastic.
     """

@@ -26,21 +26,21 @@ def apply_gaussian_blur(img, ksize):
 
 
 def apply_sharpen(img, amount):
-    """Sharpen via UNSHARP MASKING — the classic (and honest) way to sharpen.
+    """Sharpen via UNSHARP MASKING.
 
     Math
     ----
-    You cannot invent detail, but you can exaggerate the edges you already
-    have. The trick:
+    Sharpening cannot create real detail; it only exaggerates edges that are
+    already present:
 
         blurred = GaussianBlur(img)            # the low-frequency / soft part
         detail  = img - blurred                # the high-frequency / edge part
         out     = img + amount * detail
                 = (1 + amount) * img  -  amount * blurred
 
-    So `detail` is literally "what the blur threw away" (the edges), and we
-    add a multiple of it back on top of the original. `addWeighted` computes
-    that last line in one pass.
+    `detail` is the part the blur removed (the edges); a multiple of it is
+    added back on top of the original. `addWeighted` computes the last line
+    in one pass.
 
         amount = 0 -> unchanged,   larger amount -> crisper (and noisier).
     """

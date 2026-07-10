@@ -16,7 +16,7 @@ def blend_by_alpha(base, overlay, alpha):
         alpha = 0  -> fully the original  (where you didn't paint)
         0 < a < 1  -> a smooth blend      (soft, anti-aliased brush edges)
 
-    The clever part is that changing only `overlay` gives you every brush:
+    Changing only `overlay` produces every brush:
         - paint      -> overlay = the coloured strokes
         - blur brush -> overlay = the blurred image
         - sharpen    -> overlay = the sharpened image

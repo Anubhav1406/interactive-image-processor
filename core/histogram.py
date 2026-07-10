@@ -16,9 +16,9 @@ def apply_hist_eq(img):
 
         out = round( 255 * (cdf(in) - cdf_min) / (N - cdf_min) )
 
-    Intuition: brightness levels where many pixels pile up get stretched
-    apart (more contrast there), sparse levels get squeezed. A flat, gray,
-    under-exposed photo becomes punchy.
+    Brightness levels where many pixels pile up get stretched apart (more
+    contrast there), while sparse levels get squeezed, so a flat, gray,
+    under-exposed photo gains contrast.
 
     We equalize only the LUMA (Y) channel of YCrCb so colours are preserved;
     equalizing B, G, R separately would shift the hue.

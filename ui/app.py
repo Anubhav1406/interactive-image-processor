@@ -8,10 +8,9 @@ import cv2
 import streamlit as st
 from PIL import Image
 
-# --- your original ops ---
+# image operations (the maths for each is documented in its module docstring)
 from core.grayscale import apply_grayscale
 from core.brightness_contrast import apply_brightness, apply_contrast
-# --- new ops (each documents its own math in its module) ---
 from core.color import apply_gamma, apply_saturation, apply_white_balance
 from core.histogram import apply_clahe
 from core.detail import apply_gaussian_blur, apply_sharpen
@@ -31,7 +30,7 @@ try:
 except Exception:
     CANVAS_OK = False
 
-APP_NAME = "PixelForge"        # <- change this one line to rename the app
+APP_NAME = "PixelForge"
 st.set_page_config(page_title=APP_NAME, layout="wide")
 st.title(f"🛠️ {APP_NAME}")
 st.caption("An image editor built from scratch on OpenCV.")

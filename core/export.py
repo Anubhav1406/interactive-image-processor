@@ -5,9 +5,10 @@ import numpy as np
 def encode_image(img, fmt, target_kb=None):
     """Encode a BGR image to bytes, optionally hitting a file-size budget.
 
-    Many placement portals reject anything over, say, 200 KB. For JPEG we can
-    trade quality for size, so we hunt for the highest quality that still
-    fits the budget using BINARY SEARCH over the quality parameter (0..100):
+    Many upload portals reject files larger than a fixed size (e.g. 200 KB).
+    For JPEG, quality can be traded for size, so the highest quality that
+    still fits the budget is found by BINARY SEARCH over the quality parameter
+    (0..100):
 
         lo, hi = 10, 95
         while lo <= hi:

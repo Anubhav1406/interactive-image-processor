@@ -5,8 +5,6 @@ operation is a small pure function in `core/`, and each function's docstring
 explains the **math behind the tool** — that's the whole point of the project:
 understand the maths, then implement it.
 
-> Rename the app in one place: the `APP_NAME` constant at the top of `ui/app.py`.
-
 ## Run
 
 The virtual environment lives in `./venv`.
@@ -55,8 +53,8 @@ this path. Start with the watcher disabled:
 
 ```
 core/        one file per family of operations; each apply_*(img, ...) -> BGR uint8
-  grayscale.py            luminance conversion                         (original)
-  brightness_contrast.py  additive brightness, pivot-128 contrast      (original)
+  grayscale.py            luminance conversion
+  brightness_contrast.py  additive brightness, pivot-128 contrast
   color.py                gamma, saturation (HSV), gray-world white balance
   histogram.py            histogram equalization + CLAHE (CDF maths)
   detail.py               Gaussian blur, unsharp-mask sharpen
